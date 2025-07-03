@@ -1,0 +1,79 @@
+/* Default: Mobile View - one column, 10px gap */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #dedede;
+  padding: 5px;
+  margin: 15px;
+  font-size: 25px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.95em;
+}
+
+img {
+  border: 5px solid blue;
+  border-radius: 35px;
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+figure {
+  margin: 0;
+  padding: 10px;
+  background: white;
+  border: 2px solid gray;
+  text-align: center;
+}
+
+/* Tablet View (≥772px): two columns, circle figures, last spans both columns */
+@media (min-width: 772px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  figure img {
+    border-radius: 50%;
+  }
+
+  figure:last-child {
+    grid-column: span 2;
+  }
+}
+
+/* Large Screen View (≥992px): every 3rd spans 2 columns, remove border radius */
+@media (min-width: 992px) {
+  figure img {
+    border-radius: 0;
+  }
+
+  .grid figure:nth-child(3n) {
+    grid-column: span 2;
+  }
+}
+
+/* Prefers Reduced Motion: disable smooth scroll */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  figure {
+    background-color: #222;
+    color: #ffea80; /* yellow-ish */
+    border-color: black;
+  }
+}
